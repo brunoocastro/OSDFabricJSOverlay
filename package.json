@@ -1,0 +1,38 @@
+{
+  "name": "osdfabricjsoverlay",
+  "version": "1.0.0",
+  "description": "Add FabricJS overlay to OpenSeaDragon",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsc && npm run bundle:esm && npm run bundle:esm:min",
+    "bundle:esm": "rollup -c --input dist/index.js --file dist/index.mjs --format esm",
+    "bundle:esm:min": "terser --ecma 6 --compress --mangle --module -o dist/index.min.mjs -- dist/index.mjs && gzip -9 -c dist/index.min.mjs > dist/index.min.mjs.gz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brunoocastro/OSDFabricJSOverlay.git"
+  },
+  "keywords": [
+    "OSD",
+    "OpenSeaDragon",
+    "FabricJS"
+  ],
+  "author": "Bruno Castro (@brunoocastro)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brunoocastro/OSDFabricJSOverlay/issues"
+  },
+  "homepage": "https://github.com/brunoocastro/OSDFabricJSOverlay#readme",
+  "devDependencies": {
+    "@types/fabric": "^5.3.6",
+    "@types/node": "^20.9.0",
+    "@types/openseadragon": "^3.0.3",
+    "fabric": "^5.3.0",
+    "openseadragon": "^3.1.0",
+    "typescript": "^5.2.2",
+    "terser": "^5.15.0",
+    "rollup": "^2.79.1",
+    "@rollup/plugin-node-resolve": "^14.1.0"
+  }
+}
